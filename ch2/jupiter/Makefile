@@ -2,8 +2,10 @@ package = jupiter
 version = 1.0
 tarname = $(package)
 distdir = $(tarname)-$(version)
+prefix = /usr/local
+export prefix
 
-all clean jupiter:
+all clean install jupiter:
 	cd src && $(MAKE) $@
 
 dist: $(distdir).tar.gz
@@ -18,4 +20,4 @@ $(distdir):
 	cp src/Makefile $(distdir)/src
 	cp src/main.c $(distdir)/src
 
-.PHONY: all clean dist
+.PHONY: all clean dist install
